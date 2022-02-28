@@ -3,15 +3,21 @@ import { GlobalStyle } from "assets/styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { theme } from "assets/styles/theme";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 const Root = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <MainTemplate>
-        <div>chuj</div>
-      </MainTemplate>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainTemplate>
+          <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+          </Routes>
+        </MainTemplate>
+      </ThemeProvider>
+    </Router>
   );
 };
 

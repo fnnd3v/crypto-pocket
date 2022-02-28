@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,11 +16,26 @@ const Wrapper = styled.div`
 
 const Logo = styled.div`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.darkPurple};
+  background-color: ${({ theme }) => theme.colors.darkGrey};
   display: flex;
+  height: 50px;
   justify-content: flex-end;
   align-items: center;
   font-weight: bold;
+  margin-bottom: 50px;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+const activeClassName = "active-link";
+const StyledNavLink = styled(NavLink)`
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: end;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: bold;
+  position: relative;
 `;
 
 const Navigation = () => {
@@ -30,7 +46,9 @@ const Navigation = () => {
         <br />
         Pocket
       </Logo>
-      <p>naviagtion</p>
+      <StyledNavLink to="/">Dashboard</StyledNavLink>
+      <StyledNavLink to="/pocket">Pocket</StyledNavLink>
+      <StyledNavLink to="profile">Profile</StyledNavLink>
     </Wrapper>
   );
 };
