@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ViewWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-
-  padding: 20px;
+  margin: 25px;
+  background-color: ${({ theme }) => theme.colors.white};
+  width: 95%;
+  height: ${({ isArticle }) => (isArticle ? "auto" : "95%")};
+  padding: ${({ isArticle }) => (isArticle ? "5px 10px" : "40px 50px")};
+  border-radius: 25px;
 `;

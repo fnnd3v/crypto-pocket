@@ -47,9 +47,9 @@ const Navigation = () => {
         <br />
         Pocket
       </Logo>
-      <StyledNavLink to="/">Dashboard</StyledNavLink>
+      <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
       <StyledNavLink to="/pocket">Pocket</StyledNavLink>
-      <StyledNavLink to="profile">Profile</StyledNavLink>
+      <StyledNavLink to="/profile">Profile</StyledNavLink>
     </Wrapper>
   );
 };

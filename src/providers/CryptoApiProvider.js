@@ -1,19 +1,24 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const CryptoApiContext = React.createContext();
 
 const CryptoApiProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
+  const [coinsMarket, setCoinsMarket] = useState([]);
+  const [mainCurrency, setMainCurrency] = useState("usd");
 
-  const getNews = () => {
+  window.articles = articles;
+
+  useEffect(() => {
+    getMarket();
+    getArticles();
+  }, []);
+
+  const getArticles = () => {
     const options = {
       method: "GET",
-      url: "https://crypto-news-live3.p.rapidapi.com/news/cryptonews.com",
-      headers: {
-        "x-rapidapi-host": "crypto-news-live3.p.rapidapi.com",
-        "x-rapidapi-key": "635aa96644msh580d703a5339e3bp199c01jsn9d6419943f07",
-      },
+      url: "https://api.spaceflightnewsapi.net/v3/articles?_limit=15",
     };
 
     axios
@@ -24,8 +29,20 @@ const CryptoApiProvider = ({ children }) => {
       });
   };
 
+  const getMarket = () => {
+    const options = {
+      method: "GET",
+      url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${mainCurrency}&order=market_cap_desc&per_page=100&sparkline=false`,
+    };
+
+    axios
+      .request(options)
+      .then(({ data }) => setCoinsMarket(data))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <CryptoApiContext.Provider value={{ articles, getNews, articles }}>
+    <CryptoApiContext.Provider value={{ articles, coinsMarket, getMarket }}>
       {children}
     </CryptoApiContext.Provider>
   );
