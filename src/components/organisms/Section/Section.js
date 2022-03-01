@@ -1,4 +1,6 @@
-import React from "react";
+import { Loading } from "components/atoms/Loading/Loading";
+import { CryptoApiContext } from "providers/CryptoApiProvider";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -11,14 +13,15 @@ const Wrapper = styled.div`
   align-items: flex-start;
   padding: 50px;
   overflow-y: scroll;
+  width: 100%;
+  height: 100%;
 `;
 
 const Section = () => {
-  return (
-    <Wrapper>
-      <p>Section</p>
-    </Wrapper>
-  );
+  const { getNews, articles } = useContext(CryptoApiContext);
+  getNews();
+
+  return <Wrapper>{articles.length > 1 ? <div>artykuly</div> : <Loading />}</Wrapper>;
 };
 
 export default Section;

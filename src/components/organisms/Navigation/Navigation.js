@@ -18,12 +18,13 @@ const Logo = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.darkGrey};
   display: flex;
-  height: 50px;
+  height: 60px;
   justify-content: flex-end;
   align-items: center;
   font-weight: bold;
   margin-bottom: 50px;
   color: ${({ theme }) => theme.colors.white};
+  padding-right: 10px;
 `;
 
 const activeClassName = "active-link";
