@@ -32,7 +32,7 @@ const CryptoApiProvider = ({ children }) => {
   const getMarket = () => {
     const options = {
       method: "GET",
-      url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${mainCurrency}&order=market_cap_desc&per_page=100&sparkline=false`,
+      url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${mainCurrency}&order=market_cap_desc&per_page=10&sparkline=false`,
     };
 
     axios
@@ -48,8 +48,17 @@ const CryptoApiProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const handleSearchCoin = (coin) => {
+    return axios
+      .get(`https://api.coingecko.com/api/v3/search?query=${coin}`)
+      .then(({ data }) => data.coins)
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <CryptoApiContext.Provider value={{ articles, coinsMarket, getMarket, getCoinValue }}>
+    <CryptoApiContext.Provider
+      value={{ articles, coinsMarket, getMarket, getCoinValue, handleSearchCoin }}
+    >
       {children}
     </CryptoApiContext.Provider>
   );
