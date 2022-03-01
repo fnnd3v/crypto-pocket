@@ -17,14 +17,5 @@ export const Button = styled.button`
   position: relative;
   top: 0;
   left: 0;
-  &:hover {
-    width: 100%;
-  }
-
-  &::after {
-    content: "";
-    background-color: tomato;
-    height: 100%;
-    width: 0;
-  }
+  cursor: pointer;
 `;

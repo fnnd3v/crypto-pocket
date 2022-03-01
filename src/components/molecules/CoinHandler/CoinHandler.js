@@ -1,4 +1,5 @@
-import React from "react";
+import { CryptoApiContext } from "providers/CryptoApiProvider";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -55,10 +56,14 @@ const CoinHandler = ({
     current_price: price,
     price_change_percentage_24h: priceChange,
     total_volume: volume,
+    id,
   },
+  ...props
 }) => {
+
+
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <MarketRankP> {marketCapRank}. </MarketRankP>
       <Img src={image} />
       <NameP> {name}</NameP>

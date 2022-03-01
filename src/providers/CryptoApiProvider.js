@@ -8,7 +8,7 @@ const CryptoApiProvider = ({ children }) => {
   const [coinsMarket, setCoinsMarket] = useState([]);
   const [mainCurrency, setMainCurrency] = useState("usd");
 
-  window.articles = articles;
+  window.coinsMarket = coinsMarket;
 
   useEffect(() => {
     getMarket();
@@ -41,8 +41,15 @@ const CryptoApiProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const getCoinValue = (coin) => {
+    return axios
+      .get(`https://api.coingecko.com/api/v3/coins/${coin}`)
+      .then(({ data }) => data)
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <CryptoApiContext.Provider value={{ articles, coinsMarket, getMarket }}>
+    <CryptoApiContext.Provider value={{ articles, coinsMarket, getMarket, getCoinValue }}>
       {children}
     </CryptoApiContext.Provider>
   );
