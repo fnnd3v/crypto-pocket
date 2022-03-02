@@ -3,7 +3,9 @@ import { CryptoApiContext } from "providers/CryptoApiProvider";
 import React, { useContext, useEffect, useState } from "react";
 import { Wrapper } from "./SearchBar.styles";
 import styled from "styled-components";
+import useModal from "components/organisms/Modal/useModal";
 import debounce from "lodash.debounce";
+import CoinDetails from "components/molecules/CoinDetails/CoinDetails";
 
 const InfoWrapper = styled.div`
   flex-basis: 20%;
@@ -67,7 +69,9 @@ const SearchResults = styled.ul`
 const SearchBar = () => {
   const [matchingCoins, setMatchingCoins] = useState([]);
   const [searchingCoin, setSearchingCoin] = useState("");
-  const { handleSearchCoin } = useContext(CryptoApiContext);
+  const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal();
+  const { handleSearchCoin, getCoinValue } = useContext(CryptoApiContext);
+  const [currentCoin, setCurrentCoin] = useState(null);
 
   const getSearchingCoins = debounce(async () => {
     let coins = await handleSearchCoin(searchingCoin);
@@ -81,6 +85,15 @@ const SearchBar = () => {
     getSearchingCoins(searchingCoin);
   }, [searchingCoin, handleSearchCoin]);
 
+  const handleCurrentCoin = async (coinId) => {
+    setSearchingCoin("");
+    console.log(coinId);
+    const coin = await getCoinValue(coinId);
+    setCurrentCoin(coin);
+    console.log(coin);
+    handleOpenModal();
+  };
+
   return (
     <Wrapper>
       <InfoWrapper>
@@ -91,6 +104,7 @@ const SearchBar = () => {
       <SearchWrapper>
         <Input
           placeholder="find coin"
+          value={searchingCoin}
           onChange={(e) => setSearchingCoin(e.target.value)}
           name="Search"
           id="search"
@@ -99,7 +113,7 @@ const SearchBar = () => {
           <SearchResults>
             {matchingCoins.map((coin) => {
               return (
-                <li key={coin.id}>
+                <li onClick={() => handleCurrentCoin(coin.id)} key={coin.id}>
                   <img src={coin.thumb} /> {coin.name}
                   <span> ({coin.symbol})</span>
                 </li>
@@ -108,6 +122,11 @@ const SearchBar = () => {
           </SearchResults>
         ) : null}
       </SearchWrapper>
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal}>
+          <CoinDetails currentCoin={currentCoin} />
+        </Modal>
+      ) : null}
     </Wrapper>
   );
 };

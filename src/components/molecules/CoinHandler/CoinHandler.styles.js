@@ -26,21 +26,21 @@ export const Img = styled.img`
   height: 50%;
 `;
 export const NameP = styled.p`
-  width: 14%;
+  width: 13%;
   font-weight: bold;
 `;
 export const SymbolP = styled.p`
   text-transform: uppercase;
-  width: 14%;
+  width: 13%;
 `;
 export const PriceP = styled.p`
-  width: 14%;
+  width: 13%;
 `;
 export const PriceChange24 = styled.p`
-  width: 14%;
+  width: 13%;
   color: ${({ priceChange, theme: { colors } }) =>
     priceChange > 0 ? colors.success : colors.error};
 `;
 export const VolumeP = styled.p`
-  width: 14%;
+  width: 16%;
 `;
