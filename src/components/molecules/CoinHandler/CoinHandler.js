@@ -29,7 +29,7 @@ const CoinHandler = ({
       <Img src={image} />
       <NameP> {name}</NameP>
       <SymbolP> {symbol} </SymbolP>
-      <PriceP> {price} $</PriceP>
+      <PriceP> {price.toFixed(2)} $</PriceP>
       <PriceChange24 priceChange={priceChange}> {priceChange.toFixed(2)} % </PriceChange24>
       <VolumeP> {volume} $</VolumeP>
     </Wrapper>

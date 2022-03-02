@@ -1,5 +1,39 @@
 import React from "react";
-import { ChartWrapper, CoinWrapper, Img, StyledName, Wrapper } from "./CoinDetails.styles";
+import { Wrapper } from "./CoinDetails.styles";
+import addToFavIcon from "assets/icons/favourite-black.png";
+import FavIcon from "assets/icons/favourite.png";
+import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    height: 44px;
+    margin-right: 20px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+`;
+const PriceBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+`;
+const NameP = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  color: ${({ theme }) => theme.colors.darkGrey};
+`;
+const PriceP = styled.p`
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-size: ${({ theme }) => theme.fontSize.l};
+`;
 
 const CoinDetails = ({
   currentCoin: {
@@ -17,11 +51,13 @@ const CoinDetails = ({
 }) => {
   return (
     <Wrapper>
-      <CoinWrapper>
-        <Img src={imageSmall} />
-        <StyledName> {name} </StyledName>
-      </CoinWrapper>
-      <ChartWrapper></ChartWrapper>
+      <HeaderWrapper>
+        <img src={imageSmall} />
+        <PriceBox>
+          <NameP> {name} </NameP>
+          <PriceP> {marketPrice.toFixed(2)} $ </PriceP>
+        </PriceBox>
+      </HeaderWrapper>
     </Wrapper>
   );
 };
