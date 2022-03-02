@@ -6,6 +6,7 @@ import styled from "styled-components";
 import useModal from "components/organisms/Modal/useModal";
 import debounce from "lodash.debounce";
 import CoinDetails from "components/molecules/CoinDetails/CoinDetails";
+import { Loading } from "components/atoms/Loading/Loading";
 
 const InfoWrapper = styled.div`
   flex-basis: 20%;
@@ -82,7 +83,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (searchingCoin.length === 0) setMatchingCoins([]);
     if (!searchingCoin) return;
-    getSearchingCoins(searchingCoin);
+    getSearchingCoins();
   }, [searchingCoin, handleSearchCoin]);
 
   const handleCurrentCoin = async (coinId) => {
