@@ -8,4 +8,5 @@ export const Wrapper = styled.div`
   overflow-y: scroll;
   width: 100%;
   height: 100%;
+  color: ${({ theme }) => theme.colors.darkGrey};
 `;

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 95%;
   height: 60px;
   margin-bottom: 3px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  border: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  border-radius: 16px;
+  margin: 5px auto;
   font-size: ${({ theme }) => theme.fontSize.l};
   color: ${({ theme }) => theme.colors.darkGrey};
-  padding: 0 30px;
+  padding: 0 10px;
   cursor: pointer;
   transition: color 0.2s;
 
@@ -23,7 +25,7 @@ export const MarketRankP = styled.p`
   width: 1%;
 `;
 export const Img = styled.img`
-  height: 50%;
+  height: 40%;
 `;
 export const NameP = styled.p`
   width: 13%;

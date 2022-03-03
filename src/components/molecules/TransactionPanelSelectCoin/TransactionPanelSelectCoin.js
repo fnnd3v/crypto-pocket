@@ -122,6 +122,10 @@ const CoinNameInputs = styled.div`
 
 const BuyButton = styled(Button)`
   background-color: ${({ type }) => (type === "buy" ? "#8FCB81" : "none")};
+
+  &:hover {
+    background-color: #80b674;
+  }
 `;
 
 const SellButton = styled(Button)`
