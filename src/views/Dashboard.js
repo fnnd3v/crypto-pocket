@@ -29,7 +29,11 @@ const Dashboard = () => {
       <ContentWrapper>
         {coinsMarket.length > 1 ? (
           coinsMarket.map((coin) => (
-            <CoinHandler onClick={() => handleCurrentCoin(coin.id)} key={coin.id} coin={coin} />
+            <CoinHandler
+              onClick={() => handleCurrentCoin(coin.id)}
+              key={coin.id}
+              coin={coin}
+            />
           ))
         ) : (
           <Loading />
