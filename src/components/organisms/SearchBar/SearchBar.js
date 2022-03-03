@@ -100,7 +100,7 @@ const SearchBar = () => {
       <InfoWrapper>
         Logged as:
         <br />
-        <span> P. Jachym </span>
+        <span> Jachym </span>
       </InfoWrapper>
       <SearchWrapper>
         <Input
