@@ -21,7 +21,6 @@ export const ContentWrapper = styled.div`
   right: 0;
   bottom: 10%;
   padding: 5px;
-
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

@@ -116,6 +116,10 @@ const CoinNameInputs = styled.div`
     ${Input} {
       width: 100%;
       color: ${({ theme }) => theme.colors.darkGrey};
+      border: ${({ children, theme }) => {
+        const value = children[0].props.children[1].props.error;
+        return value ? `1px solid ${theme.colors.error}` : ``;
+      }};
     }
   }
 `;
@@ -140,6 +144,8 @@ const TransactionPanelSelectCoin = ({
   setTransactionCoinPrice,
   transactionQuantity,
   transactionCoinPrice,
+  handleAddTransaction,
+  formError,
 }) => {
   const handleTransactionValue = (e) => {
     setTransactionType(e.target.dataset.type);
@@ -198,6 +204,7 @@ const TransactionPanelSelectCoin = ({
                 name="quantity"
                 id="quantity"
                 type="number"
+                error={formError}
               ></Input>
             </div>
             <div>
@@ -208,6 +215,7 @@ const TransactionPanelSelectCoin = ({
                 name="price"
                 id="price"
                 type="number"
+                error={formError}
               ></Input>
             </div>
           </CoinNameInputs>
@@ -216,7 +224,7 @@ const TransactionPanelSelectCoin = ({
             <br />
             <span>$ {getTransactionValue()}</span>
           </TransactionValueWrapper>
-          <Button>add</Button>
+          <Button onClick={handleAddTransaction}>add</Button>
         </CoinWrapper>
       </TransactionContentWrapper>
     </>

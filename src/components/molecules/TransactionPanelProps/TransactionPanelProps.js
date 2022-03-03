@@ -66,6 +66,7 @@ const TransactionPanelProps = ({
   setSearchingCoin,
   coins,
   setTransactionCoin,
+  handleAddTransaction,
 }) => {
   const handleTransactionCoin = (coin) => {
     setTransactionCoin({

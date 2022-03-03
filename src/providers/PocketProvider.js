@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const PocketContext = React.createContext();
 
 const PocketProvider = ({ children }) => {
-  const init = () => {
-    console.log("init");
+  const [transactions, setTransactions] = useState([]);
+
+  window.transactions = transactions;
+
+  const handleNewTransaction = (coin, quantity, price) => {
+    const transaction = {
+      coin,
+      props: [
+        {
+          quantity,
+          price,
+        },
+      ],
+    };
+
+    setTransactions([transaction, ...transactions]);
   };
 
-  return <PocketContext.Provider value={{ init }}>{children}</PocketContext.Provider>;
+  return (
+    <PocketContext.Provider value={{ handleNewTransaction }}>
+      {children}
+    </PocketContext.Provider>
+  );
 };
 
 export default PocketProvider;

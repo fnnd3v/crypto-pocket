@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   padding: 10px 40px;
   border-radius: 25px;
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 30% 1fr;
 `;
 
 const ManageWrapper = styled.div`
@@ -41,7 +41,7 @@ const SettingsWrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.darkPurple};
 
   ${Button} {
-    width: 80%;
+    width: 95%;
   }
 `;
 
@@ -75,7 +75,6 @@ const StyledDetail = styled.div`
 const Pocket = () => {
   const [portfolioValue, setPortfolioValue] = useState(0);
   const [ProfitLoss, setProfitLoss] = useState(0);
-  const { init } = useContext(PocketContext);
   const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal();
 
   const handleOpenAddAsset = () => {
@@ -111,7 +110,7 @@ const Pocket = () => {
       <ContentWrapper></ContentWrapper>
       {isOpen ? (
         <Modal handleClose={handleCloseModal}>
-          <TransactionPanel />
+          <TransactionPanel handleCloseModal={handleCloseModal} />
         </Modal>
       ) : null}
     </Wrapper>
