@@ -37,6 +37,7 @@ export const SymbolP = styled.p`
   width: 13%;
 `;
 export const PriceP = styled.p`
+  padding: 0 15px;
   width: 13%;
 `;
 export const PriceChange24 = styled.p`

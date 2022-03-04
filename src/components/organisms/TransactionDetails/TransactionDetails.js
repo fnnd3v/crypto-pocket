@@ -1,5 +1,4 @@
 import { Loading } from "components/atoms/Loading/Loading";
-import TransalactionDetailItem from "components/molecules/TransalactionDetailItem/TransalactionDetailItem";
 import { CryptoApiContext } from "providers/CryptoApiProvider";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -11,10 +10,11 @@ const Wrapper = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: ${({ theme }) => theme.fontSize.m};
+  border: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  font-size: ${({ theme }) => theme.fontSize.l};
   background-color: ${({ theme }) => theme.colors.lightPurple};
   border-radius: 16px;
-  padding: 0 16px;
+  padding: 0 10px;
   ${Loading} {
     height: 100%;
   }
@@ -25,7 +25,8 @@ const Wrapper = styled.li`
 `;
 
 const NameDiv = styled.div`
-  width: 30%;
+  width: 25%;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -37,6 +38,7 @@ const NameDiv = styled.div`
 
 const PriceP = styled.p`
   width: 25%;
+  padding: 0 10px;
   text-align: right;
 `;
 const QuantityP = styled.p`
@@ -49,7 +51,8 @@ const BuyPriceP = styled.p`
 `;
 
 const ProfitP = styled.p`
-  width: 15%;
+  width: 20%;
+
   text-align: right;
   font-weight: bold;
 `;
