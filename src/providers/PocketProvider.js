@@ -5,11 +5,12 @@ export const PocketContext = React.createContext();
 const PocketProvider = ({ children }) => {
   const [transactions, setTransactions] = useState([]);
 
-  window.transactions = transactions;
-
-  const handleNewTransaction = (coin, quantity, price) => {
+  const handleNewTransaction = (coin, quantity, price, id, img, name) => {
     const transaction = {
       coin,
+      name,
+      id,
+      img,
       props: [
         {
           quantity,
@@ -18,11 +19,11 @@ const PocketProvider = ({ children }) => {
       ],
     };
 
-    setTransactions([transaction, ...transactions]);
+    setTransactions([...transactions, transaction]);
   };
 
   return (
-    <PocketContext.Provider value={{ handleNewTransaction }}>
+    <PocketContext.Provider value={{ handleNewTransaction, transactions }}>
       {children}
     </PocketContext.Provider>
   );

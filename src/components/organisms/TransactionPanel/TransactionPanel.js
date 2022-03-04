@@ -5,6 +5,7 @@ import debounce from "lodash.debounce";
 import TransactionPanelSelectCoin from "components/molecules/TransactionPanelSelectCoin/TransactionPanelSelectCoin";
 import TransactionPanelProps from "components/molecules/TransactionPanelProps/TransactionPanelProps";
 import { PocketContext } from "providers/PocketProvider";
+import { v4 as uuidv4 } from "uuid";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,6 +24,8 @@ const TransactionPanel = ({ handleCloseModal }) => {
   const [transactionCoinPrice, setTransactionCoinPrice] = useState(0);
   const [formError, setFormError] = useState(false);
   const [coins, setCoins] = useState([]);
+
+  window.transactionCoin = transactionCoin;
 
   useEffect(() => {
     getInitialValue();
@@ -44,18 +47,20 @@ const TransactionPanel = ({ handleCloseModal }) => {
     setCoins(coins.splice(0, 100));
   };
 
-  window.transactionCoin = transactionCoin;
-
   const handleAddTransaction = (e) => {
     if (transactionCoinPrice === 0 || transactionQuantity === 0)
       return setFormError(true);
 
     setFormError(false);
+    const ID = uuidv4();
 
     handleNewTransaction(
       transactionCoin.id,
       transactionQuantity,
-      transactionCoinPrice
+      transactionCoinPrice,
+      ID,
+      transactionCoin.img,
+      transactionCoin.name
     );
 
     handleCloseModal();

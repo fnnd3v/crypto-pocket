@@ -48,6 +48,15 @@ const CryptoApiProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const getCoinsPriceById = (tokenIds) => {
+    return axios
+      .get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${tokenIds}&vs_currencies=usd`
+      )
+      .then(({ data }) => data)
+      .catch((err) => console.log(err));
+  };
+
   const handleSearchCoin = (coin) => {
     return axios
       .get(`https://api.coingecko.com/api/v3/search?query=${coin}`)
@@ -57,7 +66,14 @@ const CryptoApiProvider = ({ children }) => {
 
   return (
     <CryptoApiContext.Provider
-      value={{ articles, coinsMarket, getMarket, getCoinValue, handleSearchCoin }}
+      value={{
+        articles,
+        coinsMarket,
+        getMarket,
+        getCoinValue,
+        handleSearchCoin,
+        getCoinsPriceById,
+      }}
     >
       {children}
     </CryptoApiContext.Provider>

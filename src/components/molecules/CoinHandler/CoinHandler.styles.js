@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   margin: 5px auto;
   font-size: ${({ theme }) => theme.fontSize.l};
   color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.lightPurple};
   padding: 0 10px;
   cursor: pointer;
   transition: color 0.2s;
