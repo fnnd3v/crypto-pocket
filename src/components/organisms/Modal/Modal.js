@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import { ModalContent, ModalWrapper } from "./Modal.styles";
+
 import { Button } from "components/atoms/Button/Button";
+
+import { ModalContent, ModalWrapper } from "./Modal.styles";
 
 const modalContainer = document.querySelector("#modal-container");
 

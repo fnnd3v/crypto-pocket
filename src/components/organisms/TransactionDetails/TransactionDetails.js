@@ -1,61 +1,16 @@
-import { Loading } from "components/atoms/Loading/Loading";
-import { CryptoApiContext } from "providers/CryptoApiProvider";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 
-const Wrapper = styled.li`
-  width: 100%;
-  height: 60px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.darkPurple};
-  font-size: ${({ theme }) => theme.fontSize.l};
-  background-color: ${({ theme }) => theme.colors.lightPurple};
-  border-radius: 16px;
-  padding: 0 10px;
-  ${Loading} {
-    height: 100%;
-  }
-  ${Loading}::after {
-    height: 40px;
-    width: 40px;
-  }
-`;
+import { CryptoApiContext } from "providers/CryptoApiProvider";
+import { Loading } from "components/atoms/Loading/Loading";
 
-const NameDiv = styled.div`
-  width: 25%;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-weight: bold;
-  img {
-    margin-right: 5px;
-  }
-`;
-
-const PriceP = styled.p`
-  width: 25%;
-  padding: 0 10px;
-  text-align: right;
-`;
-const QuantityP = styled.p`
-  width: 10%;
-  text-align: right;
-`;
-const BuyPriceP = styled.p`
-  width: 20%;
-  text-align: right;
-`;
-
-const ProfitP = styled.p`
-  width: 20%;
-
-  text-align: right;
-  font-weight: bold;
-`;
+import {
+  BuyPriceP,
+  NameDiv,
+  PriceP,
+  ProfitP,
+  QuantityP,
+  Wrapper,
+} from "./TransactionDetails.styles";
 
 const TransactionDetails = ({
   handleProfit,
@@ -68,7 +23,6 @@ const TransactionDetails = ({
   const [quantityCoin, setQuantity] = useState(props[0].quantity);
   const [coinPrice, setCoinPrice] = useState(props[0].price);
   const [coinId, setCoinId] = useState(coin);
-  const [coinTransactionId, setCoinTransactionId] = useState(id);
   const [currentPrice, setCurrentPrice] = useState();
   const [profit, setProfit] = useState();
 
@@ -97,7 +51,7 @@ const TransactionDetails = ({
       {currentPrice ? (
         <>
           <NameDiv>
-            <img src={img} /> {name}
+            <img src={img} alt="coin logo" /> {name}
           </NameDiv>
 
           <PriceP>{coinPrice}$</PriceP>

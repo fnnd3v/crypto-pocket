@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+
 import {
   Img,
   MarketRankP,
@@ -30,7 +31,10 @@ const CoinHandler = ({
       <NameP>{name}</NameP>
       <SymbolP>{symbol} </SymbolP>
       <PriceP> {price.toFixed(2)} $</PriceP>
-      <PriceChange24 priceChange={priceChange}> {priceChange.toFixed(2)} % </PriceChange24>
+      <PriceChange24 priceChange={priceChange}>
+        {" "}
+        {priceChange.toFixed(2)} %{" "}
+      </PriceChange24>
       <VolumeP> {volume} $</VolumeP>
     </Wrapper>
   );

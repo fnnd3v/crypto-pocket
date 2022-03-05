@@ -1,16 +1,13 @@
-import { CryptoApiContext } from "providers/CryptoApiProvider";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import debounce from "lodash.debounce";
+
+import { PocketContext } from "providers/PocketProvider";
+import { CryptoApiContext } from "providers/CryptoApiProvider";
 import TransactionPanelSelectCoin from "components/molecules/TransactionPanelSelectCoin/TransactionPanelSelectCoin";
 import TransactionPanelProps from "components/molecules/TransactionPanelProps/TransactionPanelProps";
-import { PocketContext } from "providers/PocketProvider";
-import { v4 as uuidv4 } from "uuid";
 
-const Wrapper = styled.div`
-  width: 100%;
-  padding: 20px;
-`;
+import { Wrapper } from "./TrnsactionPanel.styles";
 
 const TransactionPanel = ({ handleCloseModal }) => {
   //TODO: clear values

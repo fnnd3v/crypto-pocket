@@ -1,14 +1,21 @@
 import React from "react";
-import { GlobalStyle } from "assets/styles/GlobalStyle";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { theme } from "assets/styles/theme";
-import MainTemplate from "components/templates/MainTemplate/MainTemplate";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import CryptoApiProvider from "providers/CryptoApiProvider";
+import PocketProvider from "providers/PocketProvider";
 import Dashboard from "./Dashboard";
 import Pocket from "./Pocket";
 import Profile from "./Profile";
-import CryptoApiProvider from "providers/CryptoApiProvider";
-import PocketProvider from "providers/PocketProvider";
+import MainTemplate from "components/templates/MainTemplate/MainTemplate";
+
+import { GlobalStyle } from "assets/styles/GlobalStyle";
+import { theme } from "assets/styles/theme";
 
 const Root = () => {
   return (

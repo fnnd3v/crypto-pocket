@@ -1,10 +1,12 @@
-import { Loading } from "components/atoms/Loading/Loading";
-import { Title } from "components/atoms/Title/Title";
+import React, { useContext, useEffect, useState } from "react";
+
+import useModal from "components/organisms/Modal/useModal";
 import CoinDetails from "components/molecules/CoinDetails/CoinDetails";
 import CoinHandler from "components/molecules/CoinHandler/CoinHandler";
-import useModal from "components/organisms/Modal/useModal";
 import { CryptoApiContext } from "providers/CryptoApiProvider";
-import React, { useContext, useEffect, useState } from "react";
+import { Loading } from "components/atoms/Loading/Loading";
+import { Title } from "components/atoms/Title/Title";
+
 import { ContentWrapper, Wrapper } from "./Dashboard.styles";
 
 const Dashboard = () => {
